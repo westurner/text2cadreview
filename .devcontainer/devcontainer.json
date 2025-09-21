@@ -1,0 +1,23 @@
+{
+    "name": "text2cadreview-devcontainer",
+    "image": "text2cadreview:latest",
+    "runArgs": [
+        "--userns=keep-id",
+        "--security-opt=label=disable",
+        "-v",
+        "${localWorkspaceFolder}:/workspace:z"
+    ],
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-toolsai.jupyter"
+            ]
+        }
+    },
+    "postCreateCommand": "pip install -e . && pip install -r docs/requirements.txt || true"
+}
